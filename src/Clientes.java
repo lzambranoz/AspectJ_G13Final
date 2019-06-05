@@ -52,8 +52,9 @@ public class Clientes extends Entidad{
 	}
 
 	public void consultar(String cliente) {
-		System.out.println("Consultando");
-		JLabel msj = new JLabel("Has consultado "+cliente);
+		MuestraData.data = cliente;
+//		System.out.println("Consultando");
+//		JLabel msj = new JLabel("Has consultado "+cliente);
 		// TODO: Utilizar el Frame mensaje para mostrar el msj		
 	}
 
