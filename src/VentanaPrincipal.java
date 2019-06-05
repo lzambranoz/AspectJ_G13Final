@@ -9,6 +9,8 @@ public class VentanaPrincipal {
 
 	private JFrame frame;
 	static VentanaPrincipal window;
+	public JButton btnIniciarSesion;
+	public JButton btnCerrarSesion;
 
 	/**
 	 * Launch the application.
@@ -64,14 +66,14 @@ public class VentanaPrincipal {
 		btnClientes.setBounds(172, 131, 112, 23);
 		frame.getContentPane().add(btnClientes);
 		
-		JButton btnIniciarSesion = new JButton("Iniciar sesion");
-		JButton btnCerrarSesion = new JButton("Cerrar sesion");
+		btnIniciarSesion = new JButton("Iniciar sesion");
+		btnCerrarSesion = new JButton("Cerrar sesion");
 		btnIniciarSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(!IniciarSesion.sesionIniciada) {
 					IniciarSesion.initialize();
-					btnIniciarSesion.setVisible(false);
-					btnCerrarSesion.setVisible(true);
+//					btnIniciarSesion.setVisible(false);
+//					btnCerrarSesion.setVisible(true);
 				}
 				else {
 					System.out.println("Sesion ya ha sido iniciada");
@@ -91,8 +93,8 @@ public class VentanaPrincipal {
 				else {
 					System.out.println("Sesion no ha sido iniciada");
 				}
-				btnIniciarSesion.setVisible(true);
-				btnCerrarSesion.setVisible(false);
+//				btnIniciarSesion.setVisible(true);
+//				btnCerrarSesion.setVisible(false);
 				
 			}
 		});

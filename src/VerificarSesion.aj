@@ -1,19 +1,28 @@
 
 public aspect VerificarSesion {	
     // Definir el pointcut, es decir, el punto donde ocurrirá la llamada al inicio de sesión.
-    pointcut nombrePointcut(): call(* consultar(..)); 
+    pointcut validar(): call(* consultar(..));
+    pointcut cambioSesionIniciada(): call(* *Sesion(..));
   //Advices. Se ejecutarán en el lugar indicado por el pointcut.
-    before() : nombrePointcut() {
+    before() : validar() {
     	if(!IniciarSesion.sesionIniciada) {
     		IniciarSesion.initialize();
     	}
         // MétodoInicioSesión
     } 
-    after() : nombrePointcut()  {
+    after() : validar()  {
     	if(IniciarSesion.sesionIniciada) {
     		MuestraData.initialize();
     	}
-    	
-        //Ya se inició sesión. (Puede imprimir un mensaje)
+    }
+    
+    after() : cambioSesionIniciada()  {
+    	if(IniciarSesion.sesionIniciada) {
+    		VentanaPrincipal.window.btnIniciarSesion.setVisible(false);
+    		VentanaPrincipal.window.btnCerrarSesion.setVisible(true);
+    	}else {
+    		VentanaPrincipal.window.btnIniciarSesion.setVisible(true);
+    		VentanaPrincipal.window.btnCerrarSesion.setVisible(false);
+    	}
     }
 }
